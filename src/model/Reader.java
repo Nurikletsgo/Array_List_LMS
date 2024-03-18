@@ -109,7 +109,7 @@ public class Reader {
 
     public void setGender() {
         boolean choose = true;
-        System.out.println("Write gender \n"+ Arrays.toString(Gender.values()));
+        System.out.println("Choose gender \n"+ Arrays.toString(Gender.values()));
         while (choose) {
             try {
                 this.gender = Gender.valueOf(new Scanner(System.in).nextLine());

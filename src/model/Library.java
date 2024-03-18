@@ -1,27 +1,42 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Library {
     private Long libraryId;
     private String name;
-    private List<Book> books;
-   private List<Reader> readers;
+    private String address;
+    private List<Book> books = new ArrayList<>();
+   private List<Reader> readers = new ArrayList<>();
 
     public Library() {
     }
 
-    public Library(Long libraryId, String name) {
+    public Library(Long libraryId, String name, String address, List<Book> books, List<Reader> readers) {
         this.libraryId = libraryId;
         this.name = name;
-    }
-
-    public Library(Long libraryId, String name, List<Book> books, List<Reader> readers) {
-        this.libraryId = libraryId;
-        this.name = name;
+        this.address = address;
         this.books = books;
         this.readers = readers;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress() {
+        boolean choose = true;
+        System.out.println("write library address");
+        while (choose) {
+            try {
+                this.address = new Scanner(System.in).nextLine();
+                choose = false;
+            } catch (Exception e) {
+                System.err.println("write letter");
+            }
+        }
     }
 
     public Long getLibraryId() {
@@ -55,8 +70,8 @@ public class Library {
         return books;
     }
 
-    public void setBooks(Book book) {
-        this.books.add(book);
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     public List<Reader> getReaders() {
@@ -69,9 +84,10 @@ public class Library {
 
     @Override
     public String toString() {
-        return "\n{ " +
-                "library ID = " + libraryId +
-                ", library name = '" + name + '\'' +
+        return " \n Library { " +
+                " libraryId = " + libraryId +
+                ", name = '" + name + '\'' +
+                ", address = '" + address + '\'' +
                 ", \nbooks = " + books +
                 ", \nreaders = " + readers +
                 '}';
